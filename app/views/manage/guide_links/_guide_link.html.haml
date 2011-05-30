@@ -1,0 +1,4 @@
+%li.guide_link{ :id => "guide_link_#{ guide_link.id }" }
+	.handle= image_tag 'artisan_engine/listability/handle.png'
+	.name= link_to guide_link.guidable.name, polymorphic_path( guide_link.guidable )
+	.links= button_to 'Delete', guide_guide_link_path( guide_link.guide, guide_link ), :method => :delete

@@ -1,0 +1,10 @@
+%li.guide{ :id => "guide_#{ guide.id }" }
+	.handle= image_tag 'artisan_engine/listability/handle.png'
+	.name= guide.name
+	.links
+		= link_to 'Add a Link', new_guide_guide_link_path( guide )
+		= link_to 'Edit', edit_guide_path( guide )
+		= button_to 'Delete', guide_path( guide ), :method => :delete
+
+	%ol.guide_links
+		= render guide.guide_links.in_position

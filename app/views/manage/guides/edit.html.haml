@@ -1,0 +1,7 @@
+%h1 Edit Guide: #{ @guide.name }
+
+= form_for @guide do |f|
+	= f.label 		:name
+	= f.text_field :name
+	
+	= f.submit

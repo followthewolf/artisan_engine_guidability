@@ -1,0 +1,16 @@
+%h1 Add a Link to #{ parent.name }
+
+- for guidable_class in ArtisanEngine::Guidability.guidable_models
+	= form_for @guide_link, :url => guide_guide_links_path( parent ) do |f|
+		= hidden_field_tag 'guide_link[guidable_type]', guidable_class.to_s.classify
+	
+		= label_tag guidable_class.to_s, guidable_class.to_s.titleize.pluralize
+		= collection_select :guide_link, 
+								:guidable_id, 
+								guidable_class.to_s.classify.constantize.all, 
+								:id, 
+								:name, 
+								{}, 
+								{ :id => guidable_class.to_s }
+		
+		= f.submit 'Add Link'

@@ -1,0 +1,15 @@
+= render 'shared/listability/make_sortable', :type => :guide
+= render 'shared/listability/make_sortable', :type => :guide_link, :parent_div => '.guide_links'
+		
+%h1 Manage Guides
+
+%ol#guides
+	= render @guides.in_position
+
+%h4 Create a Guide
+
+= form_for :guide, :url => guides_path, :remote => true do |f|
+	= f.label 		:name
+	= f.text_field :name
+	
+	= f.submit 		'Create Guide'

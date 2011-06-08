@@ -13,10 +13,14 @@ module ArtisanEngine
     # ------------------ Autoload Necessary Modules ------------------ #
     
     autoload :TestHelpers, 'artisan_engine/guidability/test_helpers' if Rails.env.test?
+    autoload :IsGuidable, 'artisan_engine/guidability/is_guidable'
     
     # ------------------------- Vroom vroom! ------------------------- #
     
     class Engine < Rails::Engine
+      initializer 'extend ActiveRecord' do
+        ActiveRecord::Base.class_eval { include ArtisanEngine::Guidability::IsGuidable }
+      end
     end
 
   end
